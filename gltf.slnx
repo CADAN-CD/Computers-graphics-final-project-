@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="room/room.vcxproj" Id="0362b331-7930-4332-b9b2-12ed115cfc3e" />
+</Solution>

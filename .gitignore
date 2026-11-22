@@ -1,0 +1,68 @@
+
+# VISUAL STUDIO
+
+
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+
+# COMPILACION C++
+
+
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+out/
+build/
+cmake-build-*/
+
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+*.ilk
+*.pch
+*.ipch
+*.exp
+*.idb
+
+# CMAKE
+
+
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+
+# VCPKG
+
+
+/vcpkg_installed/
+/installed/
+
+
+# IMGUI
+
+
+imgui.ini
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ARCHIVOS TEMPORALES
+
+
+*.tmp
+*.log
+*.bak
+*.cache
