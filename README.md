@@ -82,7 +82,7 @@ B(t) = (1-t)³·P0 + 3(1-t)²t·P1 + 3(1-t)t²·P2 + t³·P3,   t en [0, 1]
 - **Cámara:** teclado y ratón :
 (wasd) para movimientos basicos en pantalla .
 (u-i) arriba y abajo respectivamente
-()
+El mouse manipula la direccion de la camara
 - **Panel "Crystal Controls" (ImGui):**
   - Posición, rotación y escala del cristal
   - Color e intensidad de la luz
