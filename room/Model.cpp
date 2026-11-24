@@ -51,8 +51,11 @@ void Model::loadGLB(const std::string& content) {
 }
 void Model::Draw(Shader& shader, Camera& camera, glm::mat4 matrix)
 {
+	std::cout << "Crystal meshes: "
+		<< meshes.size() << std::endl;
 	for (unsigned int i = 0; i < meshes.size(); i++)
 		meshes[i].Draw(shader, camera, matrix * matricesMeshes[i]);
+	
 }
 std::vector<unsigned char> Model::getData() {
 

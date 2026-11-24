@@ -1,9 +1,21 @@
 #include"shaderClass.h"
-
+#include <filesystem>
+#include <stdexcept>
 // Reads a text file and outputs a string with everything in the text file
 std::string get_file_contents(const char* filename)
 {
 	std::ifstream in(filename, std::ios::binary);
+
+	if (!in)
+	{
+		std::cout << "ERROR: No se pudo abrir el archivo: "
+			<< filename << std::endl;
+
+		std::cout << "Directorio de trabajo: "
+			<< std::filesystem::current_path() << std::endl;
+
+		throw std::runtime_error("File not found");
+	}
 	if (in)
 	{
 		std::string contents;

@@ -6,10 +6,16 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-class KeyboardInputs {
+class KeyboardInputs
+{
 public:
-	GLFWwindow* window;
-	void processInput(GLFWwindow* window, Camera& camera, float deltaTime);
+    void processInput(
+        GLFWwindow* window,
+        Camera& camera,
+        float deltaTime,
+        bool captureMouse,
+        bool captureKeyboard
+    );
 };
 
 #endif

@@ -23,29 +23,50 @@ Mesh::Mesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices, std::v
 }
 
 
+
 void Mesh::Draw(Shader& shader, Camera& camera, glm::mat4 matrix)
 {
-	shader.Activate();
-	VAO.Bind();
+    shader.Activate();
+    VAO.Bind();
 
-	unsigned int numDiffuse = 0;
-	unsigned int numSpecular = 0;
+    unsigned int numDiffuse = 0;
+    unsigned int numSpecular = 0;
 
-	for (unsigned int i = 0; i < textures.size(); i++)
-	{
-		std::string num;
-		std::string type = textures[i].type;
-		if (type == "diffuse")       num = std::to_string(numDiffuse++);
-		else if (type == "specular") num = std::to_string(numSpecular++);
+    // Bind textures
+    for (unsigned int i = 0; i < textures.size(); i++)
+    {
+        std::string num;
+        std::string type = textures[i].type;
 
-		textures[i].texUnit(shader, (type + num).c_str(), i);
-		textures[i].Bind();
-	}
+        if (type == "diffuse")
+            num = std::to_string(numDiffuse++);
+        else if (type == "specular")
+            num = std::to_string(numSpecular++);
 
-	glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"),
-		1, GL_FALSE, glm::value_ptr(matrix));
+        textures[i].texUnit(shader, (type + num).c_str(), i);
+        textures[i].Bind();
+    }
 
-	glDrawElements(GL_TRIANGLES, (GLsizei)indices.size(), GL_UNSIGNED_INT, 0);
-	glUniform1i(glGetUniformLocation(shader.ID, "hasTexture"), !textures.empty());
-	glUniform4fv(glGetUniformLocation(shader.ID, "baseColor"), 1, glm::value_ptr(baseColor));
+    // Send model matrix
+    glUniformMatrix4fv(
+        glGetUniformLocation(shader.ID, "model"),
+        1,
+        GL_FALSE,
+        glm::value_ptr(matrix)
+    );
+
+    // Send material information
+    glUniform1i(
+        glGetUniformLocation(shader.ID, "hasTexture"),
+        !textures.empty()
+    );
+
+    glUniform4fv(
+        glGetUniformLocation(shader.ID, "baseColor"),
+        1,
+        glm::value_ptr(baseColor)
+    );
+
+    // Draw mesh
+    glDrawElements(GL_TRIANGLES,(GLsizei)indices.size(),GL_UNSIGNED_INT,0);
 }
