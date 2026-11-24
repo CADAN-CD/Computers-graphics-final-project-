@@ -66,3 +66,6 @@ desktop.ini
 *.log
 *.bak
 *.cache
+
+# IM GUI
+imgui.ini

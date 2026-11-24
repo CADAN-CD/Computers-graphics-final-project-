@@ -35,6 +35,9 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 
+//Bezier path 
+#include "Bezier.h"
+
 int main() {
 	// Initialize GLFW
 
@@ -105,6 +108,14 @@ int main() {
 		float lastFrame = 0.0f;
 		// Main loop
 
+		//bezier curve
+		BezierPath path(
+			glm::vec3(-6.0f, 3.0f, 0.0f),
+			glm::vec3(-3.0f, 8.0f, 5.0f),
+			glm::vec3(3.0f, 8.0f, -5.0f),
+			glm::vec3(6.0f, 3.0f, 0.0f)
+		);
+
 		while (!glfwWindowShouldClose(window))
 		{
 			// 1 Process GLFW events
@@ -154,7 +165,17 @@ int main() {
 				0.1f,
 				3.0f
 			);
-
+			//bezier interface
+			ImGui::Separator();
+			ImGui::Text("Bezier path");
+			ImGui::Checkbox("Animate", &path.animate);
+			ImGui::Checkbox("Ping-pong", &path.pingPong);
+			ImGui::SliderFloat("Speed", &path.speed, 0.01f, 1.0f);
+			ImGui::SliderFloat("t", &path.t, 0.0f, 1.0f);
+			ImGui::SliderFloat3("P0", &path.P0.x, -20.0f, 20.0f);
+			ImGui::SliderFloat3("P1", &path.P1.x, -20.0f, 20.0f);
+			ImGui::SliderFloat3("P2", &path.P2.x, -20.0f, 20.0f);
+			ImGui::SliderFloat3("P3", &path.P3.x, -20.0f, 20.0f);
 			ImGui::End();
 
 			// 7 Clear buffers
@@ -165,6 +186,10 @@ int main() {
 			shaderProgram.Activate();
 
 			camera.walkAround(FOV, nearPlane, farPlane, shaderProgram, "camMatrix");
+
+			path.update(deltaTime);
+			if (path.animate)
+				crystalPosition = path.getPosition();
 
 			glUniform3f(glGetUniformLocation(shaderProgram.ID, "pointLightPos"),
 				crystalPosition.x, crystalPosition.y, crystalPosition.z);
