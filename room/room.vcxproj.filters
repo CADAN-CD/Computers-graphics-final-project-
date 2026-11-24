@@ -45,9 +45,6 @@
     <ClCompile Include="ShaderClass.cpp">
       <Filter>Resource Files\Shaders\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>Resource Files\Shaders\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="KeyboardInputs.cpp">
       <Filter>Resource Files\Shaders\Source Files</Filter>
     </ClCompile>
@@ -81,9 +78,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VBO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shaderClass.h">

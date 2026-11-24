@@ -1,27 +1,27 @@
 #pragma once
-#include <glad/glad.h>
 #include <string>
+#include <vector>
 #include <memory>
+#include <cstddef>
+#include <glad/glad.h>
 #include "shaderClass.h"
 
 class Texture {
 public:
-    GLuint ID = 0;
-    std::string type;          
-    GLuint unit = 0;
-    int width = 0, height = 0, nrChannels = 0;
+    GLuint ID;
+    std::string type;
+    GLuint unit;
+    int width, height, nrChannels;
+    std::shared_ptr<GLuint> handle;
 
-    // cube construct 
-    Texture(const std::string& path, GLenum format = GL_RGBA);
+    Texture(const std::string& path, GLenum);
+    Texture(const std::string& path, const std::string& type, GLuint slot, bool flip);
+    Texture(const unsigned char* bytes, size_t len, const std::string& type, GLuint slot, bool flip);
 
-	//construct for Mesh
-    Texture(const std::string& path, const std::string& type, GLuint slot, bool flip = false);
-
-    void bind(unsigned int unit) const;                       // cube
-    void Bind() const;                                        // Mesh
-    void texUnit(Shader& shader, const char* uniform, GLuint unit);
-
-private:
-    std::shared_ptr<GLuint> handle;   
     void load(const std::string& path, bool flip);
+    void loadFromMemory(const unsigned char* bytes, size_t len, bool flip);
+
+    void bind(unsigned int u) const;
+    void Bind() const;
+    void texUnit(Shader& shader, const char* uniform, GLuint u);
 };

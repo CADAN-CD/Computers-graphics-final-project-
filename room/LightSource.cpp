@@ -1,4 +1,4 @@
-#include "LightSource.h"
+/*#include "LightSource.h"
 #include <glm/gtc/type_ptr.hpp>
 LightSource::LightSource(const std::string& texturePath) : texture(texturePath)
 {
@@ -56,4 +56,4 @@ void LightSource::Draw(Shader& shader, glm::mat4 model)
 
 	vao.Bind();
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-}
+}*/
