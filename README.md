@@ -1,5 +1,6 @@
 # Computers-graphics-final-project-
-# Room: Diorama 3D con OpenGL
+# Diorama 3D con OpenGL
+#Autor: Carol Daniela Suarez Rincon
 
 Proyecto de gráficos por computadora hecho con **C++ y OpenGL 3.3 (core)**. Carga un diorama en formato glTF/GLB, lo ilumina con una luz puntual que sale de un cristal flotante, y permite mover ese cristal a mano o a lo largo de una **curva de Bézier**, todo desde una interfaz con ImGui.
 
