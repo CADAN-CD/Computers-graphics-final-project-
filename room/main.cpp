@@ -194,7 +194,7 @@ int main() {
 			glUniform3f(glGetUniformLocation(shaderProgram.ID, "pointLightPos"),
 				crystalPosition.x, crystalPosition.y, crystalPosition.z);
 
-			// color final = color * intensidad
+			// color final = color * intensity
 			glm::vec3 finalColor = lightColor * lightIntensity;
 			glUniform3f(glGetUniformLocation(shaderProgram.ID, "pointLightColor"),
 				finalColor.r, finalColor.g, finalColor.b);

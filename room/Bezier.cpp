@@ -6,11 +6,9 @@ BezierPath::BezierPath(glm::vec3 p0, glm::vec3 p1, glm::vec3 p2, glm::vec3 p3)
 
 glm::vec3 BezierPath::evaluate(float t) const
 {
+	//u is the complement
 	float u = 1.0f - t;
-	return u * u * u * P0
-		+ 3.0f * u * u * t * P1
-		+ 3.0f * u * t * t * P2
-		+ t * t * t * P3;
+	return u * u * u * P0+ 3.0f * u * u * t * P1+ 3.0f * u * t * t * P2+ t * t * t * P3;
 }
 
 glm::vec3 BezierPath::getPosition() const
@@ -18,6 +16,7 @@ glm::vec3 BezierPath::getPosition() const
 	return evaluate(t);
 }
 
+//Directionb of the curve -derivate  
 glm::vec3 BezierPath::getTangent() const
 {
 	float u = 1.0f - t;
